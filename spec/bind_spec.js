@@ -28,9 +28,9 @@ describe("bind",function() {
     var returnFoo = _.bind(returnThis_with_args,foo);
     var arg1 = 1, arg2 = 2, arg3 = 3;
     
-    var except_result = [foo, arg1, arg2, arg3];
+    var expect_result = [foo, arg1, arg2, arg3];
 
-    assert.deepEqual(returnFoo(arg1, arg2, arg3), except_result);
+    assert.deepEqual(returnFoo(arg1, arg2, arg3), expect_result);
   });
 });
 
