@@ -20,7 +20,7 @@ function _memoize (func, callback) {
             key = callback(arg)
         }
         if (cache.hasOwnProperty(key?key:arg)) {
-            return cache[key ? key:arg];
+            return cache[key?key:arg];
         }
         else {
             result = func(arg);
