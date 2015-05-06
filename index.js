@@ -1,5 +1,5 @@
 function _once (func) {
-    var result
+    var result;
     function inner_once () {
         if (result) {
             return result;
@@ -13,19 +13,22 @@ function _once (func) {
 };
 
 function _memoize (func, callback) {
-    var cache = {}
+    var cache = {};
     function inner_memoize (arg) {
-        var key
+        var key;
         if (callback){
-            key = callback(arg)
+            key = callback(arg);
         }
-        if (cache.hasOwnProperty(key?key:arg)) {
-            return cache[key?key:arg];
+        else{
+            key = arg;
+        }
+        if (cache.hasOwnProperty(key)) {
+            return cache[key];
         }
         else {
             result = func(arg);
-            cache[key?key:arg] = result;
-            return cache[key?key:arg];
+            cache[key] = result;
+            return cache[key];
         }
     }
     return inner_memoize;
@@ -33,8 +36,8 @@ function _memoize (func, callback) {
 
 function _bind (fn, context) {
     var self = context;
-    function inner_bind (arg) {
-        return fn.call(self, arg)
+    function inner_bind () {
+        return fn.apply(self, arguments)
     };
     return inner_bind;
 };
